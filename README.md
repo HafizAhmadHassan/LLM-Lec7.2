@@ -1,4 +1,7 @@
-# Lec6 : Stages of Building LLMs from Scratch
+# Lec7 : Stages of Building LLMs from Scratch
+
+**First Building Block** 
+**We will implement Data Preperation and Sample** 
 
 Stage 1 Sebatian Rashka book:
     -building LLM
@@ -16,43 +19,39 @@ Stage 1 Sebatian Rashka book:
 
     Multihead, Maskmultihead attention etc we will read
 
-
-Stage 2: Foundational Model After Assemble all data
-    
-    - Foundational model on unlabled data
-    - Training large language model scheme (in book)
-    - weight saving and loading main compoment
-    - we will also see open ai
-
-    - Training Loop + Model Evaluation + Load pretrained weights
+So:
+    Context: Huge number of documents
 
 
-Stage 3: Fine Tuning LLM's
-    - Classifier
-    - Personal assistant
+    How do you prepare input text for training LLMs?
+    1. splitting text into individual workd 
+    2. convert tokents into token id's
+    3. Encode token ids into vector representation
 
-    - we here give specific label data
-    LangChain
-    Ollama
+    Let us look at step1: tokenisation text
+    - take books
+    - split sentence
+    - split word
+    - convert token to ids
+    - Token embeddings which is input to GPT
 
-    e.g classify spanm or not spam
+DataSet :
+    Vook Edith Wharton book
+    - Available free to download
+    - Task to tokenise other books or list of books
 
-Recap :
-    1. LLM0s field of NLP used for advancement in generation understanding and translation of human language
-    2. Two main Steps
-        - Training unlabled data - very large datasets needed
-        - Fine Tuning on smaller lableled dataset - needed for production
-        - Fine Tuned Perfomace > LLMs on specific tasks
+Lets Code :
+    - Create Tokens: read txt file and print counts and see 100 characters
+    - Split we use : Re library .. regular expression
+        - based on space(\s) we split \s means wherethe wide space
+        - we want split comma and dot so we add [,.]|\s
+        - items.strip remove wide spaces
 
-    3. Secret Source :
-        Transformer achitectre : Attention Block make it more powerful - it allows model to understand importance of the words in context and helps to predict next words
-
-    4. Original transformer:
-        - Encoder + Decor
-    
-    5. GPT :
-        Only Decoder
-
-    6. LLM's develop Emerging Property
-        - as they are trained for next word but they can classify and translate or other tasks
-
+        Removing white spaces or not?
+            - depend on application and requirements
+            - Good to reduce memory
+            - train model to exact structure of sentence
+            - for example python code generation we need spaces because our code are sensitive to that indendation matter in this case
+        - we want ! -- ( ) : ? " | as seperate token
+        - Now after testing we apply technique to raw text
+        - we had now preprocessed variable with tokens
