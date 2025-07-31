@@ -1,97 +1,58 @@
-# Lec5 :  Zero Shot vs Few Shot Learning 
-- Transformations of GPT version
+# Lec6 : Stages of Building LLMs from Scratch
 
-Papers:
-    1. GPT: Attention all u need contain encoder : long range dependencies
-    2. GPT1: Self Supervision : no encier key Generative pre-training and unlabeled text. OpenAI also have blog about results. combined transformers and unsupervised learning.Commercial space had not heard about this.
-    3. GPT2: Language Models : they introduced GPT2 Architecture and with Large parameters.
-    4. GPT3 : 175B parameters big boom . Emotional recognition. Answers lot of parameters
-    5. GPT3.5 introduced after
-    6. Now we have GPT4o
+Stage 1 Sebatian Rashka book:
+    -building LLM
+        - Data Preperation and Sample
+        - Attention Mechanishm 
+        - LLM architecture
 
-Zero Shot : unseen task ability to generalise them without any context
+    Purpose: Main mechanisam understanding 
+    Tokenisation, Vector Embeddings, we need to encode every word
 
-Example: Translate sentence english to french
-cheese =>
+    Positional encoding we need to learn
+    How to convert into batches of data
+    Context understanding
+    Data Batching Sequence implementation
 
-OneShot : one example of task
-
-Few Shot: Learning from minimum examples:
-
-sea otther => loutre de mer
-peppermint => something
-cheese => ?
-
-GPT3 was few short learner it can do. use autoregressive
-
-GPT4 is few shot learner and it can even do zero shot learning but few shot is main thing.
-
-Datasets:
-CommonCrawl: free open rego 250 billion pages web crawl 410 billion pages they have 60% data
-WebText : covering Reddit submission from 2005 . 22% data
-Book1
-Book2 
-Wikipedia
-
-Token is unit of text which model reads for now think 1 token is 1 word
-
-Total pretraining cost 4.6 million dollars
-
-What happens in Pretraining?
-
-- Pre Training?
-training large on diverse dataset
-its about understanding human semantics
-
-- they are called base models or foundational models
-- these models can be used to fine tuning : served specific purpose of your company data
-
-- Many LLM's pretrained are available open sourced
-
-- check Open Source vs closed source model 
-Check Graph in Video
- Green line open source is comparative to GPT
-
-LLAMA (open source): performace bit better you can still continue with LLAMA
+    Multihead, Maskmultihead attention etc we will read
 
 
-- GPT Architecture : only consist of decoding block it is scaled up version of transformer model. Implemented on 2018 paper. 
+Stage 2: Foundational Model After Assemble all data
+    
+    - Foundational model on unlabled data
+    - Training large language model scheme (in book)
+    - weight saving and loading main compoment
+    - we will also see open ai
 
-why it is Autoregressive?
-    next word is prediction for gpt thats why see visual in Lecture
-    sentence itself is input output because we do not give label
+    - Training Loop + Model Evaluation + Load pretrained weights
 
-Other tasks: translation, spell correction etc
 
-because of autoregressive token creation takes lot of computation time so its costs alot. thats why it is self supervised learning
+Stage 3: Fine Tuning LLM's
+    - Classifier
+    - Personal assistant
 
-High level notion:
+    - we here give specific label data
+    LangChain
+    Ollama
 
-Input block of words ==> next word
-Input block of words ==> predicted word
+    e.g classify spanm or not spam
 
-Goal minimise (predicted word,next word) distance so we update weights
+Recap :
+    1. LLM0s field of NLP used for advancement in generation understanding and translation of human language
+    2. Two main Steps
+        - Training unlabled data - very large datasets needed
+        - Fine Tuning on smaller lableled dataset - needed for production
+        - Fine Tuned Perfomace > LLMs on specific tasks
 
-175Billion parameters are weights of GPT
+    3. Secret Source :
+        Transformer achitectre : Attention Block make it more powerful - it allows model to understand importance of the words in context and helps to predict next words
 
-Autoregressive : previous output is used as input for future prediction
+    4. Original transformer:
+        - Encoder + Decor
+    
+    5. GPT :
+        Only Decoder
 
-Pretraining:
-Unsupervised, Autoregressive model
+    6. LLM's develop Emerging Property
+        - as they are trained for next word but they can classify and translate or other tasks
 
-- GPT input text only passd to decoder.
-
-Transformaer :6 encoder - decoder blocks
-
-GPT : 96 transformer layers and 196 Billion parameters
-
-Visualise Iteration : check lecture 
-iteration#1 , iteration#2 , iteration#3
-
-why it also capable of doing translation?
-    - it is called emerging behaviour
-
-Technically GPT is not able to produce MCQ's but it does
-
-- Emergent Behaviour
-    - Search google scholar emerging behaviour is one of best topic 
