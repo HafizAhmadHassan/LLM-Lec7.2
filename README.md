@@ -1,4 +1,4 @@
-# Lec7 : Stages of Building LLMs from Scratch
+# Lec7cd  : Stages of Building LLMs from Scratch
 
 **First Building Block** 
 **We will implement Data Preperation and Sample** 
@@ -55,3 +55,51 @@ Lets Code :
         - we want ! -- ( ) : ? " | as seperate token
         - Now after testing we apply technique to raw text
         - we had now preprocessed variable with tokens
+    
+    - Now convert tokens to id for numerical representation
+        - token id is numerical representation
+        - create vocab
+            - list of unique words or tokens in alphabetical order
+            - each token is mapped to number (look lecture for visual)
+        
+        Python implementation:
+            - sorted(set(preprocessed))
+            - vocab_size
+        create Dictionary:
+            - key: value pair word:vlaue in alphabetical order
+            - enumerate take all words in alphabetical order assigned integer to it
+            - Result: Vocabloury think of this process as encoder
+            - Decoder is opposite of encoder which is 
+    
+    - Create Class of Tokenisation in Python 
+        - we have vocab
+        - we are doing reverse mapping
+        - It will have two methods :
+            - encoder : input text --> split based on space (words) --> assigned numbers
+            - decoder : reverse of encoder re.(sub) : the fox chased . --> the fox chased.
+        - create instance by passing vocab as input
+        - apply method .encode covert to ids
+        - tokenzer.decode take ids as input it covert to original text back
+
+    - Hello is not in Vocab so what we will do in encode
+        - so encoding in it is problem
+
+    - SimpleTokenizerV2: Special Context Token to deal with
+        - Let say we have fox chased the dog
+        - unk - unknown token 783
+        - endoftext - 784
+        - document1 endoftext token -  document2 endoftext token -  document3 endoftext token
+        - used between text end of particular segment
+        - between different books we have to add
+        - extend python command to add on vocabloury
+        - we saw last 5 text
+        - there are changes in encoder part
+        - we make sample test and saw the outputs in notebooks.
+    - Other BOS - begining of Sequence
+            EOS - Ending of Sequence
+            PAD - Padding
+    - GPT3 do not use aboce mentioned tokens whereas these tokens were previously mentioned
+        - Byte pair tokenization : words into subword units
+
+
+
